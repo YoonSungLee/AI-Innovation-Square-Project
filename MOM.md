@@ -23,5 +23,5 @@
 * conda env export > env_name.yaml: .yaml 파일로 저장
 * conda env create -f env_name.yaml: .yaml파일로 새로운 가상환경 만들기
 * conda env list: conda에 설치된 가상환경 리스트 출력
-* conda env remove -n env_name
+* conda env remove -n env_name<br>
 [참고] https://teddylee777.github.io/python/anaconda-%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95-%ED%8C%81-%EA%B0%95%EC%A2%8C
