@@ -17,11 +17,19 @@
 # etc.
 1. 가상환경 구축
 * 구축 경로로 이동
-* conda activate -n env_name: 가상환경 구축
+* conda create -n env_name: 가상환경 구축
 * activate env_name: 가상환경 실행
 * deactivate: 가상환경 종료
 * conda env export > env_name.yaml: .yaml 파일로 저장
 * conda env create -f env_name.yaml: .yaml파일로 새로운 가상환경 만들기
 * conda env list: conda에 설치된 가상환경 리스트 출력
-* conda env remove -n env_name<br>
+* conda env remove -n env_name: 가상환경 제거하기<br>
 [참고] https://teddylee777.github.io/python/anaconda-%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95-%ED%8C%81-%EA%B0%95%EC%A2%8C
+
+3. GPU check
+* tf.test.is_gpu_available()
+* from tensorflow.python.client import device_lib
+device_lib.list_local_devices()
+
+3. GPU install
+* conda install -c anaconda tensorflow-gpu==1.14    # CUDA와 CuDNN을 스스로 
