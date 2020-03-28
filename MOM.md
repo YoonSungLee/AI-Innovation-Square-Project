@@ -28,8 +28,8 @@
 
 3. GPU check
 * tf.test.is_gpu_available()
-* from tensorflow.python.client import device_lib
-device_lib.list_local_devices()
+* from tensorflow.python.client import device_lib<br>
+print(device_lib.list_local_devices())
 
 3. GPU install
 * conda install -c anaconda tensorflow-gpu==1.14    # CUDA와 CuDNN을 스스로 
