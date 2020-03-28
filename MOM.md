@@ -27,3 +27,8 @@ print(device_lib.list_local_devices())
 
 4. conda prompt에서 가상환경 구축 시 유의점
 * 가상환경 내에 conda install jupyter를 따로 해줘야한다. 설치하지 않아도 jupyter notebook을 실행할 수 있지만, tensorflow-gpu를 설치한 상태라도 GPU를 감지하지 못하는 사태 등 가상환경 내의 라이브러리들을 사용하지 못하는 현상이 발생할 수 있다. 따라서 가상환경 내에서 jupyter notebook을 따로 설치해주고, 그 외에 필요한 라이브러리들도 따로 설치해준다.
+* anaconda prompt를 사용한다면 가능하면 conda를 이용하여 라이브러리를 설치하도록 한다. 그래도 문제가 발생한다면 pip를 이용하여 라이브러리를 설치하는게 좋다. 그 이유는 아직 잘 모른다.
+
+5. No module named 'pycocotools'
+* 웬만한 라이브러리 오류들은 conda install이나 pip install을 이용하면 쉽게 설치되는데 해당 라이브러리는 잘 설치되지 않는다. 아래 사이트를 참고하여 문제를 해결할 수 있다.
+[참고] http://blog.naver.com/PostView.nhn?blogId=tip9004&logNo=221270291955
