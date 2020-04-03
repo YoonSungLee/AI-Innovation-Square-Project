@@ -5,6 +5,29 @@
 2. COCO dataset 불러오기
 3. Mask R-CNN 구현
 
+
+
+# Reference Sites
+[Object Detection] 1. Object Detection 논문 흐름 및 리뷰
+* https://nuggy875.tistory.com/20
+
+[Object Detection] 2. R-CNN : 딥러닝을 이용한 첫 2-stage Detector
+* https://nuggy875.tistory.com/21
+
+[Object Detection] 3. Fast R-CNN & Faster R-CNN 논문 리뷰
+* https://nuggy875.tistory.com/33
+
+양우식 - Fast R-CNN & Faster R-CNN
+* https://www.youtube.com/watch?v=Jo32zrxr6l8&list=WL&index=7&t=0s
+
+PR-012: Faster R-CNN : Towards Real-Time Object Detection with Region Proposal Networks
+* https://www.youtube.com/watch?v=kcPAGIgBGRs&list=WL&index=8&t=0s
+
+PR-057: Mask R-CNN
+https://www.youtube.com/watch?v=RtSZALC9DlU&list=WL&index=9&t=0s
+
+
+
 # etc.
 1. 가상환경 구축
 * 구축 경로로 이동
