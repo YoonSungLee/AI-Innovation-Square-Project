@@ -17,6 +17,9 @@
 [Object Detection] 3. Fast R-CNN & Faster R-CNN 논문 리뷰
 * https://nuggy875.tistory.com/33
 
+[Machine Learning Academy_part V. Best CNN Architecture] 8. ResNet [5], Faster-RCNN
+* https://blog.naver.com/PostView.nhn?blogId=laonple&logNo=220782324594
+
 양우식 - Fast R-CNN & Faster R-CNN
 * https://www.youtube.com/watch?v=Jo32zrxr6l8&list=WL&index=7&t=0s
 
