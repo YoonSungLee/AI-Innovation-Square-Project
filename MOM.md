@@ -29,6 +29,13 @@ PR-012: Faster R-CNN : Towards Real-Time Object Detection with Region Proposal N
 PR-057: Mask R-CNN
 https://www.youtube.com/watch?v=RtSZALC9DlU&list=WL&index=9&t=0s
 
+Incredible.AI Faster R-CNN
+* http://incredible.ai/deep-learning/2018/03/17/Faster-R-CNN/
+
+(논문리뷰&재구현) Mask R-CNN 설명 및 정리
+* https://ganghee-lee.tistory.com/40
+
+
 
 
 # etc.
