@@ -38,7 +38,8 @@ Incredible.AI Faster R-CNN
 What is Faster R-CNN?
 * https://dacon.io/competitions/open/235560/codeshare/613/
 
-
+Mask R-CNN Customize해서 나만의 디텍션 모델 만들기.
+* https://hansonminlearning.tistory.com/16?category=864717
 
 # etc.
 1. 가상환경 구축
