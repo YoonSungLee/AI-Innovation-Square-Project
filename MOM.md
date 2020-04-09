@@ -35,6 +35,8 @@ Incredible.AI Faster R-CNN
 (논문리뷰&재구현) Mask R-CNN 설명 및 정리
 * https://ganghee-lee.tistory.com/40
 
+What is Faster R-CNN?
+* https://dacon.io/competitions/open/235560/codeshare/613/
 
 
 
