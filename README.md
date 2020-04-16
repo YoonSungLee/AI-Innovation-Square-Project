@@ -12,21 +12,23 @@
 
 <img src="https://i.imgur.com/COjGWvG.png" width="100%"> 이미 matterport의 repository 안에는 다른 임의의 테스트용 이미지들이 있어서 그것들을 통해 결과를 확인할 수 있다. 하지만 우리가 가지고 있는 데이터에 대하여 제대로 작동하는지 확인하기 위해 휴대폰 갤러리에 있는 사진을 모델에 집어넣어봤다. 그 결과는 위의 두 사진과 같다. Mask R-CNN은 각 객체에 대하여 Bounding Box를 잡아내고, 그 BBox 내에 어떤 물체가 있는지 분류해주며, 물체와 배경을 구분하여 Masking 해준다. 대강 확인해봤을때는 꽤 좋은 결과를 얻은 것처럼 보인다. 하지만 왼쪽 이미지에서 맨 왼쪽 사람의 Segmentation이 잘 되지 않는 현상, 오른쪽 이미지에서 우산을 연으로 잘못 분류하는 현상 등 아직까지는 최상의 결과를 보여주지는 못하고 있다는 것을 확인했다.
 
-<img src="https://i.imgur.com/pupcT7Z.png" width="100%"> Mask R-CNN은 기존 R-CNN, Fast R-CNN이 사용하던 Selective Search 대신에 RPN을 사용하여 속도를 굉장히 많이 끌어올린 모델이다. 따라서 이 모델을 Real-time으로 적용이 가능한지 확인하기 위해 동영상도 모델에 넣어보았다. 해당 동영상은 내가 개인적으로 심심할 때 시청하는 '코기TV지훈' 유튜버의 영상이다. 일상생활에서 볼 수 있는 소재가 영상에 담겨 있어 이 영상을 선택해서 모델에 집어넣어보았고 결과는 다음과 같다. 이 영상의 원본 링크는 다음과 같다.<br>
-[코기TV지훈](https://www.youtube.com/watch?v=yf4hcoMZZbw)
+<img src="https://i.imgur.com/pupcT7Z.png" width="100%"> Mask R-CNN은 기존 R-CNN, Fast R-CNN이 사용하던 Selective Search 대신에 RPN을 사용하여 속도를 굉장히 많이 끌어올린 모델이다. 따라서 이 모델을 Real-time으로 적용이 가능한지 확인하기 위해 동영상도 모델에 넣어보았다. 해당 동영상은 내가 개인적으로 심심할 때 시청하는 ['코기TV지훈'](https://www.youtube.com/watch?v=yf4hcoMZZbw) 유튜버의 영상이다. 일상생활에서 볼 수 있는 소재가 영상에 담겨 있어 이 영상을 선택해서 모델에 집어넣어보았고 결과는 다음과 같다. Markdown에서 동영상을 재생시킬 수 없기에 [DogVideo masked](https://youtu.be/NKSy_OTuJ_8)를 통해 동영상을 시청할 수 있다. 추가적으로 [길거리 풍경 영상](https://www.youtube.com/watch?v=e_WBuBqS9h8) 또한 모델에 집어넣어보았다. 결과는 [RoadVideo masked](https://youtu.be/bwfDDY-iB-Y)에서 확인해 볼 수 있다. 동영상을 넣은 결과들을 살펴보면 기존 동영상보다 속도가 빨라졌다는 느낌이 들 수 있을것이다. 아마도 이는 Mask R-CNN이 아직 1초에 30프레임을 모두 학습시키지는 못하기 때문에 놓치는 프레임이 생겨 마치 동영상이 압축된 것처럼 보일 수 있다고 예상한다. 또한 그것을 감안한다고 해도 동영상 부분부분마다 아직 완전히 모든 객체를 정확히 예측하지는 못하고 있다. 즉, 완전한 Real-time을 위해서는 더 빨라야하고 더 정확해야 할 필요성이 보인다.
 
-<img src="https://i.imgur.com/AnB9PfL.png" width="100%">
+<img src="https://i.imgur.com/AnB9PfL.png" width="100%"> 다시 한 번 이미지의 결과를 살펴보면 Instance Segmenatation을 완벽히 수행하지 못하는 장면을 확인할 수 있다. 그래서 우리는 모델을 변형시켜 효율적으로 이 문제를 해결해 볼 수 있지 않을까 생각했다.
 
-<img src="https://i.imgur.com/UpMNHmm.png" width="100%">
+<img src="https://i.imgur.com/UpMNHmm.png" width="100%"> 우리가 제시하고자 하는 변형된 모델은 다음과 같다. 우리는 Segmentation에 해당하는 mask branch 부분에서 기존 FPN(Feature Pyramid Netwrok)로 구성된 모델을 U-Net으로 변경하는 것이다. U-Net은 이미 Segmentation분야에서 성능이 좋은 모델로 검증되었고 AI Innovation Square 과정 중에 이를 배웠기 때문에 선정했다.
 
-<img src="https://i.imgur.com/AdZiT9O.png" width="100%">
 
-<img src="https://i.imgur.com/cuFfR6n.png" width="100%">
+<img src="https://i.imgur.com/AdZiT9O.png" width="100%"> Mask Branch에 해당하는 U-Net을 설계한 아키텍처는 다음과 같다. 기존 모델에서 U-Net을 대입시켜야 하기 때문에 input size와 output size를 맞춰줄 필요가 있다. input size는 (Batch, num_rois, 14, 14, 256)이고 output size는 (Batch, num_rois, 28, 28, 256)이다. 애초에 width와 height가 큰 편이 아니라서 깊은 모델을 형성하기는 어렵기 때문에 MaxPooling은 한 번 수행하는 구조를 설계했다. 특히 눈여겨봐야할 점은 Maxpooling 전의 channel 수를 2배로 늘려주는건데, 이는 기존 VGG16의 bottleneck현상을 제거시키는 기법을 그대로 활용한 것이라고 봐도 무방하다. 또한 upsamping과정에서 Conv2DTranspose는 checkerboard artifacts을 피하기 위해 Upsampling2D를 사용했다. 추가적으로 마지막 Layer에는 binary masking을 위해 1x1 conv sigmoid를 적용했고 총 80개의 클래스와 1개의 배경을 포함하여 81개의 출력을 설정했다. 참고로 num_rois는 RoI의 개수를 의미한다.
 
-<img src="https://i.imgur.com/dUCmEmz.png" width="100%">
+<img src="https://i.imgur.com/cuFfR6n.png" width="100%"> 이전 슬라이드에서 설명한 Modified U-Net을 다음과 같이 Keras를 활용하여 코드로 구현했다.
 
-<img src="https://i.imgur.com/tRiHM77.png" width="100%">
 
-<img src="https://i.imgur.com/n9yDMsV.png" width="100%">
+<img src="https://i.imgur.com/dUCmEmz.png" width="100%"> 이전 슬라이드에서 설명한 Modified U-Net을 다음과 같이 Keras를 활용하여 코드로 구현했다.
+
+
+<img src="https://i.imgur.com/tRiHM77.png" width="100%"> 최종적인 형태는 다음과 같다. 기존 Mask R-CNN의 형태를 그대로 가져오되, Mask Branch의 FPN를 U-Net으로 구성하여 아키텍처를 설계했다.
+
+<img src="https://i.imgur.com/n9yDMsV.png" width="100%"> 우리는 약 2주간 프로젝트를 진행하면서 paper review 및 모델 사용과 변형을 수행했다. 계획된 프로젝트 일정이 끝나 여기서 프로젝트를 마쳤다. 향후 계획은 기회가 된다면 Modified U-Net을 Mask R-CNN과 호환이 되도록 적용 및 수정하고 COCO dataset 및 iMaterialist dataset에 학습시켜 결과를 확인하는 것을 목표로 했다. 향후 계획을 언젠가는 실현했으면 하는 바람이 있다.
 
 <img src="https://i.imgur.com/ifuntaS.png" width="100%">
