@@ -23,12 +23,26 @@
 
 <img src="https://i.imgur.com/cuFfR6n.png" width="100%"> 이전 슬라이드에서 설명한 Modified U-Net을 다음과 같이 Keras를 활용하여 코드로 구현했다.
 
-
 <img src="https://i.imgur.com/dUCmEmz.png" width="100%"> 이전 슬라이드에서 설명한 Modified U-Net을 다음과 같이 Keras를 활용하여 코드로 구현했다.
-
 
 <img src="https://i.imgur.com/tRiHM77.png" width="100%"> 최종적인 형태는 다음과 같다. 기존 Mask R-CNN의 형태를 그대로 가져오되, Mask Branch의 FPN를 U-Net으로 구성하여 아키텍처를 설계했다.
 
 <img src="https://i.imgur.com/n9yDMsV.png" width="100%"> 우리는 약 2주간 프로젝트를 진행하면서 paper review 및 모델 사용과 변형을 수행했다. 계획된 프로젝트 일정이 끝나 여기서 프로젝트를 마쳤다. 향후 계획은 기회가 된다면 Modified U-Net을 Mask R-CNN과 호환이 되도록 적용 및 수정하고 COCO dataset 및 iMaterialist dataset에 학습시켜 결과를 확인하는 것을 목표로 했다. 향후 계획을 언젠가는 실현했으면 하는 바람이 있다.
 
 <img src="https://i.imgur.com/ifuntaS.png" width="100%">
+
+# Reference
+
+PR-012: Faster R-CNN : Towards Real-Time Object Detection with Region Proposal Networks
+* https://www.youtube.com/watch?v=kcPAGIgBGRs&list=WL&index=8&t=0s
+* https://www.slideshare.net/JinwonLee9/pr12-faster-rcnn170528
+
+PR-057: Mask R-CNN
+* https://www.youtube.com/watch?v=RtSZALC9DlU&list=WL&index=9&t=0s
+* https://www.slideshare.net/TaeohKim4/pr057-mask-rcnn
+
+고민이 많은 강아지, 웰시코기 김다운
+* https://www.youtube.com/watch?v=yf4hcoMZZbw
+
+30 Minutes of Cars Driving By in 2009
+* https://www.youtube.com/watch?v=e_WBuBqS9h8
